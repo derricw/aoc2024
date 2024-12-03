@@ -10,11 +10,10 @@ function remove_item(src, idx, i) {
   for (i=idx; i<len; i++) { src[i]=src[i+1] }
   delete src[len]
 }
-function is_unsafe(arr, i) { # returns unsafe index
-  dir = direction(arr[2],arr[1])
+function is_unsafe(arr, i) {
   for (i=2; i<=length(arr); i++) {
-    if (delta_bad(arr[i], arr[i-1])) { return i } else
-    if (direction(arr[i], arr[i-1]) != dir) { return i }
+    if (delta_bad(arr[i], arr[i-1])) { return i }
+    else if (direction(arr[i], arr[i-1]) != direction(arr[2],arr[1])) { return i }
   }
   return 0 # safe
 }
